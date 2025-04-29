@@ -71,6 +71,7 @@ db.devices.insert_many([
         "sensors" : [
             "temp1",
             "temp2",
+            "temp3"
         ],
     },
     {
@@ -233,7 +234,7 @@ db.sensors.insert_many([
     },
     {
         "name" : "temp1",
-        "description" : "Temp sensor for purifier",
+        "description" : "Temp sensor1 for purifier",
         "units" : "celsius",
         "status" : "online",
         "topic" : "temperature",
@@ -246,12 +247,12 @@ db.sensors.insert_many([
         "pipelines" : [],
         "device" : "Waveshare5",
         "value_xform" : [0,1], # no scaling
-        "readout_command" : 'MEAS?7;MEAS?8;', #request one reading
-        "multi_sensor": ["temp1", "temp2"]
+        "readout_command" : 'MEAS?6;MEAS?7;MEAS?8;', #request one reading
+        "multi_sensor": ["temp1", "temp2", "temp3"]
     },
         {
         "name" : "temp2",
-        "description" : "Temp sensor for purifier",
+        "description" : "Temp sensor2 for purifier",
         "units" : "celsius",
         "status" : "online",
         "topic" : "temperature",
@@ -264,7 +265,26 @@ db.sensors.insert_many([
         "pipelines" : [],
         "device" : "Waveshare5",
         "value_xform" : [0,1], # no scaling
-        "readout_command" : 'MEAS?7;', #request one reading
+        "readout_command" : 'MEAS?6;MEAS?7;MEAS?8;', #request one reading
+        "multi_sensor": ["temp1"]
+        },
+    
+        {
+        "name" : "temp3",
+        "description" : "Temp sensor3 for purifier",
+        "units" : "celsius",
+        "status" : "online",
+        "topic" : "temperature",
+        "subsystem" : "purifier",
+        "readout_interval" : 10,
+        "alarm_recurrence" : 3,
+        "alarm_thresholds" : [25, 1000],
+        "alarm_level" : 0,
+        "alarm_is_triggered" : False,
+        "pipelines" : [],
+        "device" : "Waveshare5",
+        "value_xform" : [0,1], # no scaling
+        "readout_command" : 'MEAS?6;MEAS?7;MEAS?8;', #request one reading
         "multi_sensor": ["temp1"]
         }
 ])
